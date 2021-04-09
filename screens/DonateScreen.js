@@ -22,7 +22,7 @@ export default class DonateScreen extends React.Component {
     }
 
     getRequestedItemList =()=>{
-        db.collection("requests")
+        this.requestRef = db.collection("requests")
         .onSnapshot((snapshot)=>{
           var requestedItemList = snapshot.docs.map(document => document.data());
           this.setState({
@@ -33,6 +33,10 @@ export default class DonateScreen extends React.Component {
     
     componentDidMount(){
         this.getRequestedItemList()
+    }
+
+    componentWillUnmount(){
+      this.requestRef()
     }
 
     renderItem = ( {item, i} ) =>{
