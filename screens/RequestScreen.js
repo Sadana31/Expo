@@ -11,8 +11,9 @@ import {
     Alert} from 'react-native';
     import db from '../config'
 import {Header} from 'react-native-elements';
+import RFValue from 'react-native-responsive-fontsize';
 
-export default class App extends Component {
+export default class RequestScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,15 +23,13 @@ export default class App extends Component {
         };
     }
 
-    addRequest=()=>{
-        db.collection("requests").add({
-            "Item type": this.state.type,
-            "Name of item": this.state.name,
-            "Extra info": this.state.info
+    addRequest=async()=>{
+        await db.collection("requests").add({
+            "Item_type": this.state.type,
+            "Name_of_item": this.state.name,
+            "Extra_info": this.state.info
         })
-        Alert.alert("Request made successfully!")
-
-        
+        Alert.alert("Request made successfully!")        
     }
 
     render() {
@@ -63,7 +62,7 @@ export default class App extends Component {
             }}/>
         </View>
 
-        <View style={{marginTop: -70}} />
+        <View style={{marginTop: "2%"}} />
         <DropdownMenu
         style={{flex: 0.5, fontSize: 17}}
         bgColor={'#66b2ff'}
