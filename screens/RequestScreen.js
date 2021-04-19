@@ -11,7 +11,7 @@ import {
     Alert} from 'react-native';
     import db from '../config'
 import {Header} from 'react-native-elements';
-import RFValue from 'react-native-responsive-fontsize';
+import {RFValue} from 'react-native-responsive-fontsize';
 
 export default class RequestScreen extends Component {
     constructor(props) {
@@ -24,6 +24,11 @@ export default class RequestScreen extends Component {
     }
 
     addRequest=async()=>{
+        this.setState({
+            type: '',
+            name: "",
+            info: ""
+        })
         await db.collection("requests").add({
             "Item_type": this.state.type,
             "Name_of_item": this.state.name,
@@ -42,7 +47,7 @@ export default class RequestScreen extends Component {
             backgroundColor="#0080ff"
             navigation={this.props.navigation}/>
 
-            <Text style={{marginTop: 20, textAlign: "center"}}>
+            <Text style={{marginTop: 20, textAlign: "center", fontSize: RFValue(12)}}>
                 You can request for food or clothes in this page...
             </Text>
     
@@ -54,7 +59,7 @@ export default class RequestScreen extends Component {
                 this.setState({name: text})
             }}/>
                 
-            <TextInput style={[styles.input,{height:"90%", marginTop: 50}]} 
+            <TextInput style={[styles.input,{height:"90%", marginTop: 50, fontSize: RFValue(12)}]} 
             placeholder="Enter name of item"
             maxLength={35}
             onChangeText={(text)=>{
@@ -64,7 +69,7 @@ export default class RequestScreen extends Component {
 
         <View style={{marginTop: "2%"}} />
         <DropdownMenu
-        style={{flex: 0.5, fontSize: 17}}
+        style={{flex: 0.5, fontSize: RFValue(13)}}
         bgColor={'#66b2ff'}
         tintColor={'#000000'}
         activityTintColor={'red'}
@@ -72,7 +77,7 @@ export default class RequestScreen extends Component {
         handler={(selection, row) => this.setState({type: data[selection][row]})}
         data={data}
         >
-            <Text style={{marginTop: 20, textAlign: "center"}}>
+            <Text style={{marginTop: 20, textAlign: "center",fontSize: RFValue(12)}}>
                 You have requested for {this.state.type}
             </Text>
         </DropdownMenu>
@@ -80,11 +85,6 @@ export default class RequestScreen extends Component {
         <TouchableOpacity style={styles.button}
                  onPress={()=>{
                      this.addRequest()
-                     this.setState({
-                        type: '',
-                        name: "",
-                        info: ""
-                    })
                 }}>
             <Text style={styles.buttonText}>Request</Text>
         </TouchableOpacity>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 200,
         height: "5%",
-        marginTop: -90,
+        marginTop: "-50%",
         alignSelf: "center",
         marginBottom: 80
     },
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         textAlign: "center",
-        fontSize: 20,
+        fontSize: RFValue(12),
         marginTop: 5
     },
 })

@@ -221,7 +221,7 @@ export default class OpenScreen extends React.Component {
             <Text style={styles.buttonText}>SIGN IN</Text>
           </TouchableOpacity>
 
-          <Text style={[styles.head, { marginTop: 20 }]}>
+          <Text style={[styles.head, { marginTop: "9%" }]}>
             Don't have an account? Sign up
           </Text>
 
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#0080ff',
     borderRadius: 10,
-    width: 200,
+    width: 300,
     margin: 10,
     height: '7%',
   },
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 23,
-    marginTop: 5,
+    marginTop: 17,
   },
   head: {
     margin: 5,
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     color: '#3750F3',
   },
   input: {
-    width: 300,
+    width: "60%",
     height: '8%',
     borderBottomWidth: 2,
     backgroundColor: '#dff5f7',
